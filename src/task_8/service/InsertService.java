@@ -4,6 +4,23 @@ import java.util.ArrayList;
 
 public class InsertService {
     public void getInsertedIndexes(ArrayList<Integer> a, ArrayList<Integer> b) {
+        System.out.print("Indexes: ");
+        int indexOfLastElements = checkFirstElements(a, b);
+        checkLastElements(indexOfLastElements, a, b);
+        System.out.println();
+        System.out.println("Result list: " + a);
+    }
+
+    private void checkLastElements(int i, ArrayList<Integer> a, ArrayList<Integer> b) {
+        if(i != b.size()) {
+            for (int j = i; j < b.size(); j++) {
+                a.add(b.get(j));
+                System.out.print(a.size() - 1 + " ");
+            }
+        }
+    }
+
+    private int checkFirstElements(ArrayList<Integer> a, ArrayList<Integer> b) {
         int i = 0;
         for (int j = 0; j < a.size(); j++) {
             if(i < b.size() && b.get(i) <= a.get(j)) {
@@ -17,6 +34,6 @@ public class InsertService {
                 i++;
             }
         }
-        System.out.println(a);
+        return i;
     }
 }

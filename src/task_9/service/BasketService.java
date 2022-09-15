@@ -23,9 +23,8 @@ public class BasketService {
     }
 
     public double getSumWeight() {
-        double weight = 0;
-        for (int i = 0; i < basket.getBalls().size(); i++)
-            weight += basket.getBalls().get(i).getWeight();
-        return weight;
+        return basket.getBalls().stream()
+                .mapToDouble(Ball::getWeight)
+                .sum();
     }
 }
